@@ -3,6 +3,7 @@ package betweenlands.entities.mobs;
 import java.util.Random;
 
 import betweenlands.entities.particles.EntityDruidCastingFX;
+import betweenlands.lib.Ids;
 import betweenlands.lib.ModInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLiving;
@@ -26,6 +27,7 @@ public class EntityDarkDruid extends EntityMob
 {
     public int attackTimer = 140;
     private int attackCounter;
+    public int ID = 0;
     
     public int forgetTimer = 40;
     private int forgetCounter = 0;
@@ -189,7 +191,7 @@ public class EntityDarkDruid extends EntityMob
      */
     protected int getDropItemId()
     {
-        return 0;
+        return ID;
     }
     
 
@@ -199,10 +201,27 @@ public class EntityDarkDruid extends EntityMob
      */
     public void dropFewItems(boolean par1, int par2)
     {
-        if (this.rand.nextInt(5) == 0)
+       /* if (this.rand.nextInt(5) == 0)
         {
             this.dropItem(this.getDropItemId(), 1);
-        }
+        } */
+    		int RM;
+    		RM = this.rand.nextInt(4);
+    		if (RM == 0) {
+    			ID = Ids.swampTalismanPiece1_actual+Ids.idShift;
+    		}
+    		else if (RM == 1) {
+    			ID = Ids.swampTalismanPiece2_actual+Ids.idShift;
+    		}
+    		else if (RM == 2) {
+    			ID = Ids.swampTalismanPiece3_actual+Ids.idShift;
+    		}
+    		else if (RM == 3) {
+    			ID = Ids.swampTalismanPiece4_actual+Ids.idShift;
+    		}
+    		
+    		this.dropItem(ID, 1);
+    	
     }
     
     /**
